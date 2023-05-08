@@ -25,9 +25,10 @@ GPT is incredible for creating sample data. It seems to hit all of the strengths
 ```bash
 $ ggpt prompt "output a csv of 3 users."
 
-Im sorry, as an AI language model, I don't have access to a database or any specific user data
-to output as a CSV file. Can you please provide more details about the user data you would like
-me to generate as a CSV file?
+Im sorry, as an AI language model, I dont have access to a database or
+any specific user data to output as a CSV file. Can you please provide 
+more details about the user data you would like me to generate as a CSV 
+file?
 ```
 
 I've found the workaround here to be adding the word "sample" to the query.
@@ -43,7 +44,8 @@ mike_jackson,mikejackson@email.com,42,teacher
 Pretty neat, let's add some features to the data.
 
 ```bash
-$ ggpt prompt "output a sample csv of 3 users. Include email, username, name, age, and sex"
+$ ggpt prompt "output a sample csv of 3 users. Include email, username, 
+name, age, and sex"
 
 john@example.com,johndoe,John Doe,32,Male
 jane@example.com,janedoe,Jane Doe,28,Female
@@ -58,8 +60,8 @@ Obviously with 3 entries this data is a bit useless, but it’s not hard to see 
 I’ve spent too much time fiddling with Kubernetes yamls. If GPT is so smart, let's try to make this process happen a bit quicker.
 
 ```bash
-$ ggpt prompt "generate me a kubernetes yaml file that deployes one uubntu container, in a
-namespace named ubuntu"
+$ ggpt prompt "generate me a kubernetes yaml file that deployes one uubntu
+container, in a namespace named ubuntu"
 
 apiVersion: v1
 kind: Namespace
@@ -81,9 +83,10 @@ spec:
 Does this pass the eye test? GPT doesn’t falter, despite my “uubntu” typo. It creates us a namespace named ubuntu, and a pod named ubuntu in said namespace. Pretty much what we asked for, albeit with some weirdness. It’s unlikely this would actually work given the versionless “ubuntu” image name, and the sleep infinity command is a bit unexpected. I also don't really think there's a ton of value in this example anyway: I could find a simple boilerplate like this with a quick google search. Lets try something with a bit more meat to it.
 
 ```bash
-$ ggpt prompt "Generate me a kubernetes yaml. Include a deployment of 2 postgresql pods,
-deployed into an already created namespace named thisnamespaceexists. Put it behind a service
-named psqlservice. Give each pod a limit of 200MB of memory"
+$ ggpt prompt "Generate me a kubernetes yaml. Include a deployment of 2
+postgresql pods, deployed into an already created namespace named
+thisnamespaceexists. Put it behind a service named psqlservice. Give each 
+pod a limit of 200MB of memory"
 
 apiVersion: apps/v1
 kind: Deployment
@@ -141,8 +144,8 @@ Woo. We have a deployment of 2 postgres pods, in the correct “thisnamespaceexi
 Another use I've had moderate success with is generating quick and simple scripts. Lets take a look at some bash.
 
 ```bash
-$ ggpt prompt "output a bash function that takes one integer argument named port. output
-the name of the service that is running that port"
+$ ggpt prompt "output a bash function that takes an integer argument named
+port. output the name of the service that is running that port"
 ```
 ```
 Heres a possible solution using the `lsof` command:
@@ -153,7 +156,11 @@ port_service() {
     echo "Service running on port $port is: $service"
 }
 
-This function uses the `lsof` command to list all open files and sockets, filtering by the given port. The result is piped to `awk` to extract the second row (which corresponds to the process ID) and print the associated command name. The output is then echoed with a message indicating the target port.
+This function uses the `lsof` command to list all open files and sockets,
+filtering by the given port. The result is piped to `awk` to extract the
+second row (which corresponds to the process ID) and print the associated
+command name. The output is then echoed with a message indicating the
+target port.
 
 You can call this function with a port number, like:
 
@@ -201,9 +208,9 @@ postgres 1075 postgres    3u  IPv4  29545      0t0  TCP localhost:postgresql (LI
 ```
 Cool. Now that we know the issue is a simple missed 'sudo', lets see if GPT can fix it for us. We can take advantage of `declare -f` to spit our function definition back into GPT.
 ```bash
-$ ggpt prompt "The following bash function will not work because it needs super user
-privileges: $(declare -f port_service). Return it with the changes it needs to run. Include
-no explanation."
+$ ggpt prompt "The following bash function will not work because it needs
+super user privileges: $(declare -f port_service). Return it with the
+changes it needs to run. Include no explanation."
 
 port_service () {
         sudo local port=$1
