@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How I've been using GPT"
-author: "Inela"
+author: "Isaiah"
 tags: ["gpt", "llm", "content"]
 ---
 
