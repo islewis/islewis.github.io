@@ -13,9 +13,9 @@ Now, I really do understand how powerful these models are (as much as anyone can
 
 ## Putting GPT to work
 
-Now, I really do understand how powerful these models are (as much as anyone can), which makes it strange I've had some hesitancy using them. The only explanation that feels apt? I have a lack of imagination. The following examples are a hands-on exploratory way for me to identify the value GPT can bring to my common workflows. You might have heard the saying “If you have a question, someone else probably does too”. I have lots of questions, and this is my attempt at starting on the answers. It’s almost impossible that everything that brings value to me, will also to you, my reader, but I believe there’s still value in trying.
+I briefly started using ChatGPT, and quickly was put off. Almost all of my flow is based around the command line, and I found the amount of tab-switching and copy-pasting a non-starter for any proper integration. My solution to this was throwing together a bash script, which I quickly rewrote in Go. All it does is query OpenAI’s GPT API, and return it. It's named “ggpt”, and isn’t in the scope of what I wanted to talk about, but if anyone wants to try any of the examples for themselves, ggpt can be found [here](https://github.com/islewis/ggpt). This certainly isn’t necessary, as everything shown here should be reproducible in ChatGPT.
 
-Once I got GPT setup in a familiar environment, I got crackin. After a month, my takeaway is GPT is fucking cool.
+Once I got GPT setup in a familiar environment, I got crackin. After a month, my takeaway is GPT is really fucking cool.
 
 ## What the hell can I use GPT for?
 
