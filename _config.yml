@@ -1,13 +1,13 @@
 # Site settings
 title:          islewis
 description:    "Just some thoughts"
-url:            islewis.github.io
+url:            islewis.xyz
 
 # Author
 author:
   name:         Isaiah Lewis
   #email:       example@gmail.com
-  url:          islewis.github.io
+  url:          islewis.xyz
 
 # Build settings
 markdown:       kramdown
