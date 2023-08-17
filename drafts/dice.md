@@ -22,4 +22,7 @@ It has too. John Nash proved that for any finite game, there exists atleast one 
 # Back to Liars Dice.
 While a traditional game of liars dice consists of two players playing multiple rounds until a player loses all of their dice, we can discect the game into "minigames". Instead of thinking of "Liars Dice" as one game, we can think of it as a set of individual games, where the outcome of the previous dictates the start of the next. The first round can be defined as a 6-Dice vs 6-Dice game, the next a 6v5, and the next either a 6v4, or a 5v5 depending on the winner of the previous. This chunking of the dice state allows us to easily analyze the impacts of the constantly changing information dynamics. Each minigame will have it's own Nash Equilibirum, with the overall Nash Equilibrium being the set of respective minigame Equilibriums.
 
-Luckily, 
+I lucked out here: someone else has already done it! THNG has an amazing blog post where he calculates the Equilibrium strategies for a 1v1 game, as well as 2v1 and 1v2. We can see the outputs below.
+
+But what about the rest of the minigames? 3v1? 5v2? 6v2? As the dice count grow, the computational complexity needed to calculate the equilibrium grows exponentially. Even in a game as low as 2v1, we still are reaching the upper limit of what is amateurly calculatable, and we need to move into techniques that approximate the equilibrium strategy. 
+
