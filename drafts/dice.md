@@ -1,4 +1,10 @@
 #Liars Dice
+People have vices. One of those is gambling. Whether it's a poker night, a super bowl bet, or picking investments, everyone gambles. This isn't anything new either, people have been gambling for thousands of years [1]. In recent years, as compute power has gotten more accessable, incredible bodies of analysis have been produced to better understand games we put money on (or just play for fun). Given how much we like to gamble, this is hardly suprising- and we're not even considering the quantity of money involved. Poker, fantasy football, and the stock market are all great examples of games that are saturated with near-infinite technical anaysis available. While it might not all be of the highest quality, there is no lack of Poker strategy books, blogs spouting stock market tips, or insider fantasy scoops. Quality models for popular games such as poker were created by people who are certainly much smarter than you or I. While i'm confident there's more innvation to occur in a game like poker, i'll go out on a limb and speculate that it is unlikely I will be the one doing it. What might be possible however, is using existing knowledge of popular games to guide discoveries about games outside the spotlight. That game, being Liars Dice. 
+
+My goal is to gain a practical advantage while playing. Liars dice is a game I play with my friends. I dont need a series of equations to model liars dice: I need strategies to win games, or to help win games. I'm not a mathmatician, nor an export poker player. But I dont think I need to be to hopefully gain some small advantages, that will hopefully compound. This writing attempts to document my trail of learning, for a game that is much less discovered than others. 
+
+# The game
+
 Liars dice is an intiguing dice game that's oddly similar to poker. The rules are similar,...
 
 The simple gameplay of liars dice invites complex strategy, due to the ever changing information dynamics. In game theory, Liars Dice would be labeled an asymetric game. Similar to poker, oppenents have differing amounts, and quality, of information at any given time. Unlike a game like chess, where all game state is visible to all players, the decisions made in Liars Dice require making guesses about hidden information.
@@ -26,3 +32,5 @@ I lucked out here: someone else has already done it! THNG has an amazing blog po
 
 But what about the rest of the minigames? 3v1? 5v2? 6v2? As the dice count grow, the computational complexity needed to calculate the equilibrium grows exponentially. Even in a game as low as 2v1, we still are reaching the upper limit of what is amateurly calculatable, and we need to move into techniques that approximate the equilibrium strategy. 
 
+
+[1] https://en.wikipedia.org/wiki/Gambling#History
