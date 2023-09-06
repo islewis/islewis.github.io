@@ -1,7 +1,8 @@
-#Liars Dice
-People have vices. One of those is gambling. Whether it's a poker night, a super bowl bet, or picking investments, everyone gambles. This isn't anything new either, people have been gambling for thousands of years [1]. In recent years, as compute power has gotten more accessable, incredible bodies of analysis have been produced to better understand the games we wager on (or just play for fun). Given how much we like to gamble, this is hardly suprising- and we're not even considering the quantity of money involved. Poker, fantasy football, and the stock market are all great examples of games that are saturated with near-infinite technical anaysis available. While it might not all be of the highest quality, there is no lack of Poker strategy books, blogs spouting stock market tips, or insider fantasy scoops. Quality models for popular games such as poker were created by people who are certainly much smarter than you or I. While i'm confident there's more innvation to occur in a game like poker, i'll go out on a limb and speculate that it is unlikely I will be the one doing it. What might be possible however, is using existing knowledge of popular games to guide discoveries about games outside the spotlight. That's what i'll be writing about today, with my game of choice being Liars Dice. 
+People have vices. One of those is gambling. Whether it's a poker night, a super bowl bet, or picking investments, everyone gambles. This isn't anything new either, people have been gambling for thousands of years [1]. In recent years, as compute power has gotten more accessable, incredible bodies of analysis have been produced to better understand the games we wager on (or just play for fun). Given how much we like to gamble, this is hardly suprising- and we're not even considering the quantity of money involved. Poker, fantasy football, and the stock market are all great examples of games that are saturated with near-infinite technical anaysis available. 
 
-My goal is to gain a practical advantage while i'm playing. Liars dice is a game I play with my friends: I dont need a series of equations to model liars dice. I need strategies to win games, or atleast to help. I'm not a mathmatician, nor an expert poker player. But I dont think I need to be, in order to gain some small advantages, that will hopefully compound across an entire game. This writing attempts to document my trail of learning, for a game that's isn't as discovered as Go or Chess. 
+While it might not all be of the highest quality, there is no lack of Poker strategy books, blogs spouting stock market tips, or insider fantasy scoops. Quality models for popular games such as poker were created by people who are certainly much smarter than you or I. While i'm confident there's more innvation to occur in a game like poker, i'll go out on a limb and speculate that it is unlikely I will be the one doing it.
+
+What might be possible however, is using existing knowledge of popular games to guide discoveries about games outside the spotlight. That's what i'll be writing about today, with my game of choice being Liars Dice. My goal is to gain a practical advantage while i'm playing. Liars dice is a game I play with my friends: I dont need a series of equations to model liars dice. I need strategies to win games, or atleast to help. I'm not a mathmatician, nor an expert poker player. But I dont think I need to be, in order to gain some small advantages, that will hopefully compound across an entire game. This writing attempts to document my trail of learning, for a game that's isn't as discovered as Go or Chess. 
 
 # Rules of the Game
 
@@ -23,6 +24,12 @@ This is dubbed a "Mixed Strategy" in game theory. A mixed strategy dictates prob
 
 In Texas Hold'em, one of the easier to understand GTO concepts is pre-flop strategy. Pre-flop represents your first action after looking at your 2 hole cards. A good preflop player can boil the table state into 3 variables: Cards, Position, and incoming action, and act accordingly. For example, being 1st to act (Also called Under The Gun), with a suited K8, we'd raise 87.5% of the time, and fold the other 12.5% of the time. If we we're sitting in cuttoff, which acts later, we would raise that hand 100% of the time! In fact, even if we got dealt K3 suited (A noticably worse hand), we would still raise 100% of the time in that position! Model this function across every possible hand you could be dealt, and you end up with a GTO preflop strategy. Visualized, it looks something like this: 
 
+
+|![image Texas Hold'em preflop GTO chart](gto.png) |
+|:--:|
+| *Red represents raise. Blue represents fold. [4]* |
+
+
 Now, the question is: If you can't lose money playing GTO, why doesn't everyone play GTO? Well, going back to the "Theoretical" designation I gave GTO, it's impossible to play perfect GTO poker. Playing perfect GTO is no different than always knowing the best chess move. Easier said than done. While always sticking to GTO is impossible, we can still aim to adapt GTO strategy into our play, making us slightly more unexploitable than our opponent. 
 
 If we can model this in a game like Poker, could we do something similar in Liars Dice?
@@ -39,17 +46,35 @@ Understanding these concepts can lead to advantages in poker, but what about Lia
 
 # Back to Liars Dice.
 
-Liars Dice does have an Equilibrium. John Nash proved that for any finite game, there exists atleast one Nash Equilibrium. This was published in his 1950's paper "Non-Cooperative Games", and unsupringly, is why the equilibrium is named after him. So, how do we find it? 
+It does. John Nash proved that for any finite game, there exists atleast one Nash Equilibrium. This was published in his 1950's paper "Non-Cooperative Games", and unsupringly, is why the equilibrium is named after him. So, how do we find it? 
 
-Now, here's where I lucked out: someone else has already calculated the Nash Equilbrium for Liars Dice! THNG has an amazing blog post [3] where he calculates the Equilibrium strategies for Liars Dice, using a supoer smart way to break the game down. While a traditional game of liars dice consists of two players playing multiple rounds until a player loses all of their dice, we can slice the game into "minigames". Instead of thinking of "Liars Dice" as one game, we can think of it as a set of individual games, where the outcome of the previous dictates the next minigame. The first round can be defined as a 6-Dice vs 6-Dice game, the next a 6v5, and the next either a 6v4, or a 5v5 depending on the winner of the previous. This chunking of the dice state isolate's out the dice count variable, putting the focus on bidding strategies (right where we want it). Each minigame will have it's own Nash Equilibirum, with the overall Nash Equilibrium being the set of respective minigame Equilibriums.
+Now, here's where I lucked out: someone else has already calculated the Nash Equilbrium for Liars Dice! Thomas Ahle has an amazing blog post [3] where he calculates pieces of the Equilibrium strategy for Liars Dice, using a super clever way to break the game down. While a traditional game of liars dice consists of two players playing multiple rounds until a player loses all of their dice, we can slice the game into "minigames". Instead of thinking of "Liars Dice" as one game, we can think of it as a set of individual games, where the outcome of the previous dictates the next minigame. The first round can be defined as a 6-Dice vs 6-Dice game, the next a 6v5, and the next either a 6v4, or a 5v5 depending on the winner of the previous. This slicing of the game state isolate's out the dice count variable, putting the focus on bidding strategies (right where we want it). Each minigame will have it's own Nash Equilibirum, with the overall Nash Equilibrium being the set of respective minigame Equilibriums.
 
-INCLUDE: Nash Tables
+Starting from the end, we can see the Equilibrium Table for opening a 1 die vs 1 die game: 
+|![image Liars Dice Equilibrium](1-1.png) |
+|:--:|
+| *Table generated by Thomas Able [5]. White represents likelyhood to bid said face* |
 
+With a quick glanse, there are a few takeaways. 
+- Rolling a 1, or a 2, and your play is somewhat straightforward. 3-6 is more variable.
+- Never open up with a 6 unless you have a wildcard 1.
 
-But what about the rest of the minigames? 3v1? 5v2? 6v2? As the dice count grow, the computational complexity needed to calculate the equilibrium grows exponentially. Even in a game as low as 2v1, we still are reaching the upper limit of what is amateurly calculatable, and we need to move into techniques that approximate the equilibrium strategy. 
+Without an engine to explore deeper into any of these lines, it's difficult to guarentee a lasting advantage, but this information is certainly better than nothing.
 
+But what about the rest of the minigames? 3v1? 5v2? 6v3? As the dice count grow, the computational complexity needed to calculate the equilibrium grows exponentially. We quickly reach the upper limit of what is amateurly calculatable, and need to move into methods that approximate the best plays, not gaurentee them. What this looks like in practice is likely something similar to chess's stockfish [6]. In Thomas' article, he goes down this path, training a Neural Net for each of these games, which you can play against here.
+
+# Wrapping it up
+Will any of this actually end up helping me out in my next game? I'm not so sure. I certainly gained more understanding about the 1v1 endgames, but likely just enough to give me a small advantage. Without having an anaysis engine to implement the theory, it's pretty difficult to translate it into actual plays. 
+
+However, i'm sure that anyone who is thinking about Nash Equilibriums or Game Theory is already pretty good at Liars Dice- or that's atleast what i'd like to tell myself.
+
+# Whats next?
+I wanted to get more into the weeds, and do some more technical work, but the scope of those ideas eclipsed what I wanted to do for this article. Considering this work as an introduction, i'm eyeing a future project aimed at taking advantage of specific playstyles using reinforcement learning as the backbone of a playstyle-biased engine. Given my goal of practical game advantages, i'm hoping this approach would lead to some more concrete strategies, specifically aimed at exploiting misteps by oppenents. More to come.
 
 
 [1] https://en.wikipedia.org/wiki/Gambling#History
 [2] https://nashpy.readthedocs.io/en/stable/
 [3] nash equilibirum liars dice post TBD
+[4] https://app.gtowizard.com/
+[5] Liars dice nash equilibrium github
+[6] lichess stockfish
